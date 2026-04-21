@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Entity | CU Intranet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #F8FAFC;
+        }
+
+
+        .form-container {
+            max-width: 1000px;
+            margin: 0 auto 5rem;
+            padding: 0 1.5rem;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid #E2E8F0;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .step-card.active {
+            display: block;
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #F1F5F9;
+            padding-bottom: 1.5rem;
+        }
+
+        .step-badge {
+            background: #3B82F6;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* Form Controls */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #1E293B;
+        }
+
+        .form-label span {
+            color: #EF4444;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #CBD5E1;
+            font-size: 0.9rem;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* SDG Grid */
+        .sdg-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .sdg-card {
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 0.75rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .sdg-card:hover {
+            border-color: #3B82F6;
+            transform: translateY(-2px);
+        }
+
+        .sdg-card.selected {
+            border-color: #10B981;
+            background: #F0FDF4;
+        }
+
+        .sdg-card img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .sdg-card span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #64748B;
+            display: block;
+        }
+
+        .check-icon {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            color: #10B981;
+            display: none;
+        }
+
+        .sdg-card.selected .check-icon {
+            display: block;
+        }
+
+        /* Nav Buttons */
+        .form-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1px solid #3B82F6;
+            color: #3B82F6;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .btn-primary {
+            background: #3B82F6;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        /* Subsection Title */
+        .subsection-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #1E293B;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #F1F5F9;
+            padding-bottom: 0.75rem;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header style="background: white; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--sidebar-border); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo">
+            <h2 class="serif" style="color: var(--accent); font-weight: 800; letter-spacing: -0.5px;">CU Intranet</h2>
+        </div>
+        <nav class="nav-center" style="display: flex; gap: 2rem;">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="directory.html" class="nav-link">Directory</a>
+            <a href="entities.html" class="nav-link">Explore</a>
+            <a href="https://oaaeventpro.vercel.app" class="nav-link">Events</a>
+        </nav>
+        <div class="nav-right">
+            <a href="login.html" class="btn btn-maroon">Login</a>
+        </div>
+    </header>
+
+    <div style="background: #F1F5F9; padding: 2rem 5%; margin-bottom: 3rem;">
+        <h1 class="serif" style="font-size: 2rem; color: #1E293B;">New Entity Registration</h1>
+        <p style="color: #64748B; font-size: 0.9rem;">Pioneer a new student organization or academic society.</p>
+    </div>
+
+    <main class="form-container">
+        <!-- Step 1 -->
+        <div class="step-card active" id="step1">
+            <div class="step-header">
+                <h2 class="serif">Entity Details</h2>
+                <div class="step-badge">Step 1 of 5</div>
+            </div>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Select Entity Type <span>*</span></label>
+                    <select class="form-control">
+                        <option>Select Type</option>
+                        <option>Clubs</option>
+                        <option>Communities</option>
+                        <option>Professional Societies</option>
+                        <option>Departmental Societies</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Entity Name <span>*</span></label>
+                    <input type="text" class="form-control" placeholder="ENTER ONE WORD ONLY (E.G., BLOCKCHAIN)">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Proposed Date <span>*</span></label>
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Proposed by <span>*</span></label>
+                    <select class="form-control">
+                        <option>Select Proposer</option>
+                    </select>
+                </div>
+                <div class="form-group" style="grid-column: span 2;">
+                    <label class="form-label">Responsible Department <span>*</span> <small style="font-weight: 400; color: #64748B;">(Department that will oversee this entity)</small></label>
+                    <select class="form-control">
+                        <option>Select Responsible Department</option>
+                    </select>
+                </div>
+            </div>
+
+            <label class="form-label" style="margin-top: 1rem;">Select SDGs <span>*</span> <small style="font-weight: 400; color: #64748B;">(Minimum 1, Maximum 4. SDG 4 is pre-selected)</small></label>
+            <div class="sdg-grid">
+                <div class="sdg-card">
+                    <i data-lucide="check-circle" class="check-icon"></i>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzYvGCHzVb_i3Nq9i8uA09w_46kK9Yp_iNQw&s" alt="SDG1">
+                    <span>No Poverty</span>
+                </div>
+                <div class="sdg-card">
+                    <i data-lucide="check-circle" class="check-icon"></i>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sustainable_Development_Goal_02.png/1200px-Sustainable_Development_Goal_02.png" alt="SDG2">
+                    <span>Zero Hunger</span>
+                </div>
+                <div class="sdg-card">
+                    <i data-lucide="check-circle" class="check-icon"></i>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Sustainable_Development_Goal_03.png/1200px-Sustainable_Development_Goal_03.png" alt="SDG3">
+                    <span>Good Health</span>
+                </div>
+                <div class="sdg-card selected">
+                    <i data-lucide="check-circle" class="check-icon" style="display: block;"></i>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_xV9P8i9L4S_1Y_I-Y-FkS8eZ5k_h_I_I9A&s" alt="SDG4">
+                    <span>Quality Education</span>
+                </div>
+                <div class="sdg-card">
+                    <i data-lucide="check-circle" class="check-icon"></i>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_xV9P8i9L4S_1Y_I-Y-FkS8eZ5k_h_I_I9A&s" alt="SDG5">
+                    <span>Gender Equality</span>
+                </div>
+                <!-- ... other SDGs -->
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card" id="step2">
+            <div class="step-header">
+                <h2 class="serif">Mission, Vision & Objectives</h2>
+                <div class="step-badge">Step 2 of 5</div>
+            </div>
+            
+            <div class="form-group">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                    <label class="form-label">Mission Statement <span>*</span></label>
+                    <small style="color: #64748B; font-size: 0.7rem;">0/300 characters</small>
+                </div>
+                <textarea class="form-control" placeholder="Enter your mission statement (max 300 characters)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                    <label class="form-label">Vision <span>*</span></label>
+                    <small style="color: #64748B; font-size: 0.7rem;">0/100 characters</small>
+                </div>
+                <textarea class="form-control" placeholder="Enter your vision statement (max 100 characters)"></textarea>
+            </div>
+
+            <label class="form-label">Objectives <span>*</span> <small style="font-weight: 400; color: #64748B;">(Minimum 3, Maximum 4 points)</small></label>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <input type="text" class="form-control" placeholder="Enter objective 1 (max 90 characters)">
+                <input type="text" class="form-control" placeholder="Enter objective 2 (max 90 characters)">
+                <input type="text" class="form-control" placeholder="Enter objective 3 (max 90 characters)">
+                <input type="text" class="form-control" placeholder="Enter objective 4 (max 90 characters)">
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card" id="step3">
+            <div class="step-header">
+                <h2 class="serif">Student Advisory Details</h2>
+                <div class="step-badge">Step 3 of 5</div>
+            </div>
+
+            <h3 class="subsection-title">Student Secretary</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Name <span>*</span></label>
+                    <input type="text" class="form-control" placeholder="ENTER STUDENT SECRETARY NAME">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email <span>*</span></label>
+                    <input type="email" class="form-control" placeholder="ENTER STUDENT SECRETARY EMAIL">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">UID <span>*</span></label>
+                    <input type="text" class="form-control" placeholder="ENTER STUDENT SECRETARY UID">
+                </div>
+            </div>
+
+            <div class="form-grid" style="grid-template-columns: 1fr 2fr;">
+                <div class="form-group">
+                    <label class="form-label">Phone <span>*</span></label>
+                    <input type="text" class="form-control" placeholder="+91 Enter mobile number">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Department <span>*</span></label>
+                    <select class="form-control"><option>Select Department</option></select>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Student Joint Secretary</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" placeholder="ENTER JOINT SECRETARY NAME">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" placeholder="ENTER JOINT SECRETARY EMAIL">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">UID</label>
+                    <input type="text" class="form-control" placeholder="ENTER JOINT SECRETARY UID">
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card" id="step4">
+            <div class="step-header">
+                <h2 class="serif">Faculty Advisory Details</h2>
+                <div class="step-badge">Step 4 of 5</div>
+            </div>
+
+            <h3 class="subsection-title">Faculty Advisor</h3>
+            <div class="toggle-container">
+                <span style="color: #EF4444; font-weight: 700; text-transform: uppercase; font-size: 0.7rem;">ARE YOU CO-CURRICULAR/COMPETITION COORDINATOR FOR NEXT SEMESTER</span>
+                <i data-lucide="toggle-left" size="24" style="color: #CBD5E1; cursor: pointer;"></i>
+                <span style="color: #64748B;">Inactive</span>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Name <span>*</span></label>
+                    <input type="text" class="form-control" placeholder="ENTER FACULTY ADVISOR NAME">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email <span>*</span></label>
+                    <input type="email" class="form-control" placeholder="ENTER FACULTY ADVISOR EMAIL">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Employee Code <span>*</span></label>
+                    <input type="text" class="form-control" placeholder="ENTER EMPLOYEE CODE">
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-card" id="step5">
+            <div class="step-header">
+                <h2 class="serif">Acknowledgement</h2>
+                <div class="step-badge">Step 5 of 5</div>
+            </div>
+
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 2rem; border-radius: 8px; color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">
+                I acknowledge that the information provided in this form is accurate and complete to the best of my knowledge. I understand that submitting false or misleading information may result in the rejection of this proposal or other appropriate actions.
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 2rem;">
+                <input type="checkbox" style="width: 20px; height: 20px;">
+                <span style="font-size: 0.9rem; font-weight: 600; color: #1E293B;">I acknowledge and agree to the above statement</span>
+            </div>
+        </div>
+
+        <!-- Form Navigation -->
+        <div class="form-nav">
+            <button class="btn-outline" id="prevBtn" style="display: none;">Previous</button>
+            <button class="btn-primary" id="nextBtn">Next Phase</button>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+
+        function updateForm() {
+            document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
+            document.getElementById(`step${currentStep}`).classList.add('active');
+
+            prevBtn.style.display = currentStep === 1 ? 'none' : 'block';
+            
+            if (currentStep === totalSteps) {
+                nextBtn.innerText = 'Submit & Download';
+                nextBtn.style.background = '#2563EB';
+            } else {
+                nextBtn.innerText = 'Next Phase';
+                nextBtn.style.background = '#3B82F6';
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateForm();
+            } else {
+                alert('Entity Registration Submitted Successfully! Your proposal is now in the approval pipeline.');
+                window.location.href = 'index.html';
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateForm();
+            }
+        });
+    </script>
+</body>
+</html>

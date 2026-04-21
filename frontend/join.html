@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join as a New Member | CU Intranet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .join-page {
+            background-color: #F8FAFC;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            max-width: 1000px;
+            margin: 4rem auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .form-header {
+            padding: 3rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .form-header h2 {
+            font-size: 2.2rem;
+            color: #1F2937;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 800;
+        }
+
+        .form-body {
+            padding: 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #4B5563;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            margin: 10px auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .input-group label {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #6B7280;
+            text-align: center;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+            background: #FAFBFC;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            background: white;
+        }
+
+        .tel-group {
+            display: flex;
+            gap: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+        }
+
+        .tel-prefix {
+            background: #F3F4F6;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: #4B5563;
+            border-right: 1px solid #E5E7EB;
+        }
+
+        .tel-group input {
+            border: none;
+        }
+
+        /* Email Verification Section */
+        .verification-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 0.5fr 1fr 0.5fr;
+            gap: 1rem;
+            align-items: flex-end; /* This pushes buttons down to align with inputs */
+        }
+
+        .btn-action {
+            background-color: #64748B;
+            color: white;
+            height: 52px; /* Matching the height of the input fields */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .btn-action:hover {
+            background-color: #475569;
+        }
+
+        .btn-submit {
+            background-color: #94A3B8;
+            color: white;
+            width: 100%;
+            padding: 1.25rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            margin-top: 4rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent);
+        }
+
+        .email-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .email-suffix {
+            position: absolute;
+            right: 1rem;
+            color: #94A3B8;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid, .verification-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-body {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="join-page">
+    <header style="background: white;">
+        <div class="logo">
+            <h2 class="serif" style="color: var(--accent); font-weight: 800; letter-spacing: -0.5px;">CU Intranet</h2>
+        </div>
+        <nav class="nav-center">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="entities.html" class="nav-link">Entities</a>
+            <a href="https://oaaeventpro.vercel.app" class="nav-link">Events</a>
+        </nav>
+        <div class="nav-right">
+            <a href="login.html" class="nav-link">Login</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Join as a new member</h2>
+            </div>
+            
+            <form class="form-body">
+                <!-- Personal Information -->
+                <div class="section-title">Personal Information</div>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="input-group">
+                        <label>UID</label>
+                        <input type="text" class="form-control" placeholder="Enter your UID" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Department</label>
+                        <select class="form-control" required>
+                            <option value="">Select Department</option>
+                            <option>Applied Sciences</option>
+                            <option>Computer Science</option>
+                            <option>Mechanical Engineering</option>
+                            <option>Business Management</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Mobile Number</label>
+                        <div class="tel-group">
+                            <span class="tel-prefix">+91</span>
+                            <input type="tel" class="form-control" placeholder="Enter 10-digit number" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entity Selection -->
+                <div class="section-title">Select Entity & Category</div>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Entity Type</label>
+                        <select class="form-control" id="entityType" required>
+                            <option value="">Select Entity Type</option>
+                            <option>Clubs</option>
+                            <option>Communities</option>
+                            <option>Professional Societies</option>
+                            <option>Departmental Societies</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Entity Category</label>
+                        <select class="form-control" required>
+                            <option value="">Select Entity Category</option>
+                            <option>Technical</option>
+                            <option>Cultural</option>
+                            <option>Social</option>
+                            <option>Academic</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Email Verification -->
+                <div class="section-title">Email Verification</div>
+                <div class="verification-grid">
+                    <div class="input-group">
+                        <label>Your Email</label>
+                        <div class="email-input-wrapper">
+                            <input type="text" class="form-control" required>
+                            <span class="email-suffix">@cuchd.in</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-action">Send OTP</button>
+                    <div class="input-group">
+                        <label>Enter OTP</label>
+                        <input type="text" class="form-control" placeholder="Enter OTP" required>
+                    </div>
+                    <button type="button" class="btn-action">Verify</button>
+                </div>
+
+                <button type="submit" class="btn-submit">Continue to Verification</button>
+            </form>
+        </div>
+    </main>
+
+    <footer style="padding: 4rem 5%; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
+        © 2026 CU Intranet. All rights reserved.
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

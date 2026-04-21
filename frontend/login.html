@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | CU Intranet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .step-hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .email-display {
+            background: #F3F4F6;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: #4B5563;
+            font-weight: 600;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-left: auto;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="login-bg">
+    <header style="border: none; background: transparent;">
+        <div class="logo">
+            <h2 class="serif" style="color: var(--accent); font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+                <div style="background: var(--accent); color: white; padding: 4px 8px; border-radius: 4px;"><i data-lucide="library" size="16"></i></div>
+                CU Intranet <span style="font-weight: 300; color: var(--text-muted); font-size: 0.9rem; margin-left: 5px;">| Co-Curricular Activity Management System</span>
+            </h2>
+        </div>
+    </header>
+
+    <div class="login-card">
+        <h2 style="font-family: 'Work Sans', sans-serif;">Staff & Student Login</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2.5rem; font-size: 0.9rem;">Sign in with your university account</p>
+        
+        <!-- Step 1: Email -->
+        <form id="emailForm" class="fade-in" style="text-align: left;">
+            <div style="margin-bottom: 2rem;">
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; color: #374151;">University Email ID</label>
+                <div style="position: relative;">
+                    <i data-lucide="mail" size="18" style="position: absolute; left: 1rem; top: 1rem; color: var(--text-muted);"></i>
+                    <input type="email" id="emailInput" class="input-field" placeholder="username@cumail.in / username@cuchd.in" required 
+                           pattern=".+@cumail\.in|.+@cuchd\.in" title="Please enter a valid university email address (cumail.in or cuchd.in)">
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; font-style: italic;">Use your official university credentials to sign in.</p>
+            </div>
+            
+            <button type="submit" class="btn btn-maroon" style="width: 100%; justify-content: center; padding: 1.25rem; font-size: 1rem; border-radius: 16px;">
+                Next <i data-lucide="arrow-right" size="18"></i>
+            </button>
+        </form>
+
+        <!-- Step 2: Password -->
+        <form id="passwordForm" class="step-hidden fade-in" style="text-align: left;">
+            <div class="email-display">
+                <i data-lucide="user" size="16"></i>
+                <span id="displayEmail">user@cumail.in</span>
+                <button type="button" class="back-btn" id="changeEmail">Change</button>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; color: #374151;">Password</label>
+                <div style="position: relative;">
+                    <i data-lucide="lock" size="18" style="position: absolute; left: 1rem; top: 1rem; color: var(--text-muted);"></i>
+                    <input type="password" id="passwordInput" class="input-field" placeholder="Enter your password" required>
+                </div>
+                <p id="loginError" style="color: #EF4444; font-size: 0.75rem; margin-top: 0.5rem; display: none;">Invalid password. Please try again.</p>
+            </div>
+            
+            <button type="submit" class="btn btn-maroon" style="width: 100%; justify-content: center; padding: 1.25rem; font-size: 1rem; border-radius: 16px;">
+                Log In <i data-lucide="log-in" size="18"></i>
+            </button>
+        </form>
+        
+        <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; font-size: 0.85rem; font-weight: 600;">
+            <a href="#" style="color: var(--accent); text-decoration: none;">Forgot ID?</a>
+            <span style="color: var(--border-light)">•</span>
+            <a href="#" style="color: var(--accent); text-decoration: none;">Need Help?</a>
+        </div>
+        
+        <div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">
+            <span>VER 2.4.0</span>
+            <span style="display: flex; align-items: center; gap: 6px;"><div style="width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></div> System Online</span>
+        </div>
+    </div>
+
+    <footer style="margin-top: auto; padding: 2rem; text-align: center; font-size: 0.75rem; color: var(--text-muted);">
+        <p>Copyright © 2026 CU Intranet. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const emailForm = document.getElementById('emailForm');
+        const passwordForm = document.getElementById('passwordForm');
+        const emailInput = document.getElementById('emailInput');
+        const passwordInput = document.getElementById('passwordInput');
+        const displayEmail = document.getElementById('displayEmail');
+        const backBtn = document.getElementById('changeEmail');
+        const loginError = document.getElementById('loginError');
+
+        // Admin Credentials
+        const ADMIN_EMAILS = ['temp.cse@cumail.in', '23bcs11006@cuchd.in'];
+        const ADMIN_PASS = 'tempcse_123';
+
+        // Step 1 -> Step 2
+        emailForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            displayEmail.innerText = emailInput.value;
+            emailForm.classList.add('step-hidden');
+            passwordForm.classList.remove('step-hidden');
+        });
+
+        // Back to Step 1
+        backBtn.addEventListener('click', () => {
+            passwordForm.classList.add('step-hidden');
+            emailForm.classList.remove('step-hidden');
+            passwordInput.value = '';
+            loginError.style.display = 'none';
+        });
+
+        // Step 2 Login logic
+        passwordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = emailInput.value.trim().toLowerCase();
+            const pass = passwordInput.value.trim();
+
+            if (ADMIN_EMAILS.includes(email) && pass === ADMIN_PASS) {
+                // Success
+                localStorage.setItem('userEmail', email);
+                window.location.href = 'dashboard.html';
+            } else {
+                // Fail
+                loginError.style.display = 'block';
+                passwordInput.style.borderColor = '#EF4444';
+                passwordInput.value = ''; // Clear password on failure
+            }
+        });
+    </script>
+</body>
+</html>

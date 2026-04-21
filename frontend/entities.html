@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Our Entities | CU Intranet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .entities-page {
+            background-color: #FDFDFD;
+        }
+
+        /* Hero Section */
+        .entities-hero {
+            padding: 6rem 5% 4rem;
+            max-width: 900px;
+        }
+
+        .entities-hero h1 {
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .entities-hero h1 span {
+            color: var(--navy);
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .entities-hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+        }
+
+        /* Directories Section */
+        .directories-section {
+            padding: 4rem 5%;
+        }
+
+        .label-small {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .active-entities-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .entity-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .entity-card .icon-placeholder {
+            width: 48px;
+            height: 48px;
+            background: #F8FAFC;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .entity-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .entity-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .entity-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .entity-number {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .browse-link {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .entity-bg-icon {
+            position: absolute;
+            top: 10px;
+            right: -10px;
+            opacity: 0.03;
+            color: var(--text-dark);
+        }
+
+        /* Events Section */
+        .upcoming-events-section {
+            padding: 4rem 5% 8rem;
+        }
+
+        .events-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .filter-input {
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+            background: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-light);
+            position: relative; /* Fixed: Prevents badge bleed */
+        }
+
+        .event-img {
+            width: 240px;
+            position: relative;
+            flex-shrink: 0;
+            background: #EEE;
+        }
+
+        .event-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .event-details {
+            padding: 2.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-category {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .event-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .event-date-badge {
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            text-align: right;
+        }
+
+        .eb-month { font-weight: 800; display: block; font-size: 0.9rem; line-height: 1; }
+        .eb-day { font-weight: 800; font-size: 1.5rem; display: block; margin: 4px 0; }
+        .eb-year { font-weight: 400; font-size: 0.8rem; color: var(--text-muted); }
+
+        .event-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .attendees {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -10px;
+            background: #CBD5E1;
+        }
+
+        .avatar:first-child { margin-left: 0; }
+        .avatar.plus {
+            background: var(--navy);
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 1200px) {
+            .active-entities-grid { grid-template-columns: repeat(2, 1fr); }
+            .event-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="entities-page">
+    <header style="background: white;">
+        <div class="logo">
+            <h2 class="serif" style="color: var(--accent); font-weight: 800; letter-spacing: -0.5px;">CU Intranet</h2>
+        </div>
+        <nav class="nav-center">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="entities.html" class="nav-link">Explore</a>
+            <a href="https://oaaeventpro.vercel.app" class="nav-link">Events</a>
+        </nav>
+        <div class="nav-right" style="display: flex; align-items: center; gap: 1.5rem;">
+            <a href="join.html" class="btn btn-maroon">Register as Member</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="entities-hero">
+            <h1 class="serif">Explore Our <br><span>Entities</span></h1>
+            <p>Join a legacy of student-led innovation. Discover diverse entities that foster professional growth, co curricular activities, and lifelong connections at CU Intranet.</p>
+            <div style="display: flex; gap: 1rem;">
+                <a href="#" class="btn btn-maroon">Explore Clubs</a>
+                <a href="#" class="btn btn-ghost" style="background: #F1F5F9;">View Calendar</a>
+            </div>
+        </section>
+
+        <!-- Directories Section -->
+        <section class="directories-section">
+            <span class="label-small">Directories</span>
+            <h2 class="serif" style="font-size: 2.25rem;">Active Entities</h2>
+
+            <div class="active-entities-grid">
+                <!-- Clubs -->
+                <div class="entity-card">
+                    <i data-lucide="users" class="entity-bg-icon" size="100"></i>
+                    <div class="icon-placeholder"><i data-lucide="users" size="24"></i></div>
+                    <h3>Clubs</h3>
+                    <p>Student-interest groups focused on hobbies and social bonding.</p>
+                    <div class="entity-footer">
+                        <span class="entity-number">37</span>
+                        <a href="directory.html?filter=clubs" class="browse-link">Browse +</a>
+                    </div>
+                </div>
+                <!-- Communities -->
+                <div class="entity-card">
+                    <i data-lucide="layout-grid" class="entity-bg-icon" size="100"></i>
+                    <div class="icon-placeholder"><i data-lucide="layout-grid" size="24"></i></div>
+                    <h3>Communities</h3>
+                    <p>Inclusive spaces for cultural identity and shared backgrounds.</p>
+                    <div class="entity-footer">
+                        <span class="entity-number">5</span>
+                        <a href="directory.html?filter=communities" class="browse-link">Browse +</a>
+                    </div>
+                </div>
+                <!-- Prof Societies -->
+                <div class="entity-card">
+                    <i data-lucide="briefcase" class="entity-bg-icon" size="100"></i>
+                    <div class="icon-placeholder"><i data-lucide="briefcase" size="24"></i></div>
+                    <h3>Professional Societies</h3>
+                    <p>Career-focused organizations helping you build your future.</p>
+                    <div class="entity-footer">
+                        <span class="entity-number">30</span>
+                        <a href="directory.html?filter=professional" class="browse-link">Browse +</a>
+                    </div>
+                </div>
+                <!-- Dept Societies -->
+                <div class="entity-card">
+                    <i data-lucide="graduation-cap" class="entity-bg-icon" size="100"></i>
+                    <div class="icon-placeholder"><i data-lucide="graduation-cap" size="24"></i></div>
+                    <h3>Departmental Societies</h3>
+                    <p>Academic extensions of your chosen field of study.</p>
+                    <div class="entity-footer">
+                        <span class="entity-number">15</span>
+                        <a href="directory.html?filter=departmental" class="browse-link">Browse +</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="upcoming-events-section">
+            <div class="events-header">
+                <div>
+                    <h2 class="serif" style="font-size: 3rem;">Upcoming Events</h2>
+                    <p style="color: var(--text-muted); margin-top: 0.5rem;">Engage with your peers in high-impact activities.</p>
+                </div>
+                <div class="filters" style="align-items: center;">
+                    <div class="search-container">
+                        <div class="search-icon"><i data-lucide="search" size="18"></i></div>
+                        <input type="text" class="search-input" style="padding-top: 0.8rem; padding-bottom: 0.8rem;" placeholder="Search events...">
+                    </div>
+                    <select class="filter-input" style="height: 48px;">
+                        <option>All Categories</option>
+                        <option>Clubs</option>
+                        <option>Communities</option>
+                        <option>Professional Societies</option>
+                        <option>Departmental Societies</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="event-grid">
+                <!-- Event 1 -->
+                <div class="event-card">
+                    <div class="event-img" style="background: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&q=80') center/cover;">
+                        <span class="event-label">Professional</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-date-badge">
+                            <span class="eb-month">OCT</span>
+                            <span class="eb-day">18</span>
+                            <span class="eb-year">2024</span>
+                        </div>
+                        <span class="event-category">Entrepreneurship Society</span>
+                        <h3 class="event-title">Career Catalyst Workshop</h3>
+                        <div class="event-meta">
+                            <span><i data-lucide="clock" size="16"></i> 11:00 AM</span>
+                            <span><i data-lucide="map-pin" size="16"></i> Conference Hall C</span>
+                        </div>
+                        <div class="event-footer">
+                            <div class="attendees">
+                                <div class="avatar"></div><div class="avatar"></div><div class="avatar"></div>
+                                <div class="avatar plus">+12</div>
+                            </div>
+                            <a href="https://oaaeventpro.vercel.app" class="btn btn-maroon" style="padding: 0.6rem 1.2rem; border-radius: 8px;">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event 2 -->
+                <div class="event-card">
+                    <div class="event-img" style="background: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=400&q=80') center/cover;">
+                        <span class="event-label">Cultural</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-date-badge">
+                            <span class="eb-month">OCT</span>
+                            <span class="eb-day">25</span>
+                            <span class="eb-year">2024</span>
+                        </div>
+                        <span class="event-category">Global Student Alliance</span>
+                        <h3 class="event-title">International Gala Night</h3>
+                        <div class="event-meta">
+                            <span><i data-lucide="clock" size="16"></i> 07:00 PM</span>
+                            <span><i data-lucide="map-pin" size="16"></i> Great Plaza Garden</span>
+                        </div>
+                        <div class="event-footer">
+                            <div class="attendees">
+                                <div class="avatar"></div><div class="avatar"></div><div class="avatar"></div>
+                                <div class="avatar plus">+54</div>
+                            </div>
+                            <a href="https://oaaeventpro.vercel.app" class="btn btn-maroon" style="padding: 0.6rem 1.2rem; border-radius: 8px;">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event 3 -->
+                <div class="event-card">
+                    <div class="event-img" style="background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80') center/cover;">
+                        <span class="event-label">Professional</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-date-badge">
+                            <span class="eb-month">NOV</span>
+                            <span class="eb-day">02</span>
+                            <span class="eb-year">2024</span>
+                        </div>
+                        <span class="event-category">Coding League</span>
+                        <h3 class="event-title">Algorithmic Sprint 2024</h3>
+                        <div class="event-meta">
+                            <span><i data-lucide="clock" size="16"></i> 09:00 AM</span>
+                            <span><i data-lucide="map-pin" size="16"></i> Lab 404, Tech Wing</span>
+                        </div>
+                        <div class="event-footer">
+                            <div class="attendees">
+                                <div class="avatar"></div><div class="avatar"></div><div class="avatar"></div>
+                                <div class="avatar plus">+38</div>
+                            </div>
+                            <a href="https://oaaeventpro.vercel.app" class="btn btn-maroon" style="padding: 0.6rem 1.2rem; border-radius: 8px;">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event 4 -->
+                <div class="event-card">
+                    <div class="event-img" style="background: url('https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=400&q=80') center/cover;">
+                        <span class="event-label">Sports</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-date-badge">
+                            <span class="eb-month">NOV</span>
+                            <span class="eb-day">05</span>
+                            <span class="eb-year">2024</span>
+                        </div>
+                        <span class="event-category">Athletics Board</span>
+                        <h3 class="event-title">Inter-Society Court-off</h3>
+                        <div class="event-meta">
+                            <span><i data-lucide="clock" size="16"></i> 04:00 PM</span>
+                            <span><i data-lucide="map-pin" size="16"></i> Multi-purpose Gym</span>
+                        </div>
+                        <div class="event-footer">
+                            <div class="attendees">
+                                <div class="avatar"></div><div class="avatar"></div><div class="avatar"></div>
+                                <div class="avatar plus">+18</div>
+                            </div>
+                            <a href="https://oaaeventpro.vercel.app" class="btn btn-maroon" style="padding: 0.6rem 1.2rem; border-radius: 8px;">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 4rem 5%; border-top: 1px solid var(--border-light); font-size: 0.8rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
+        <p>© 2026 CU Intranet. All rights reserved.</p>
+        <div style="display: flex; gap: 2rem;">
+            <a href="#" style="color: inherit; text-decoration: none;">PRIVACY</a>
+            <a href="#" style="color: inherit; text-decoration: none;">TERMS</a>
+            <a href="#" style="color: inherit; text-decoration: none;">SUPPORT</a>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
