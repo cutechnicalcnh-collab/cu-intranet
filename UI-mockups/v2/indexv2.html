@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CU Intranet — Chandigarh University's official student portal." />
+  <title>CU Intranet — Chandigarh University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="stylev2.css" />
+</head>
+<body>
+
+  <!-- ─── FLOATING NAVBAR ─── -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <img src="chandigarh-university-cu-logo-png_seeklogo-432515.png" alt="CU" class="nav-logo" />
+        <div class="nav-brand-text">
+          <strong>CU INTRANET</strong>
+          <small>Connecting Bonds</small>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#features" class="nav-link">Explore</a>
+        <a href="#events" class="nav-link">Events</a>
+        <a href="#clubs" class="nav-link">Clubs</a>
+        <a href="#achievements" class="nav-link">Achievements</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="#login" class="nav-cta">Get Started</a>
+      </div>
+      <!-- Mobile hamburger (CSS-only) -->
+      <input type="checkbox" id="menu-toggle" class="sr-only" />
+      <label for="menu-toggle" class="hamburger">
+        <span></span><span></span><span></span>
+      </label>
+    </div>
+  </header>
+
+  <!-- ─── HERO — SPLIT LAYOUT ─── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-shapes">
+      <div class="bg-circle bg-circle-1"></div>
+      <div class="bg-circle bg-circle-2"></div>
+      <div class="bg-circle bg-circle-3"></div>
+      <div class="bg-grid"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-chip">🚀 Welcome to your Campus Hub</span>
+        <h1>Where Campus<br/><span class="gradient-text">Comes Alive</span></h1>
+        <p>One platform. 37 Clubs. 5 Communities. 30 Professional Societies. Discover events, connect with peers, and unlock your full potential at Chandigarh University.</p>
+        <div class="hero-cta-group">
+          <a href="#clubs" class="cta-primary">
+            Explore Clubs
+            <span class="cta-arrow">→</span>
+          </a>
+          <a href="#events" class="cta-secondary">View Events</a>
+        </div>
+        <!-- Mini stats row -->
+        <div class="hero-mini-stats">
+          <div class="mini-stat">
+            <span class="mini-num">37</span>
+            <span class="mini-label">Clubs</span>
+          </div>
+          <div class="mini-stat">
+            <span class="mini-num">5</span>
+            <span class="mini-label">Communities</span>
+          </div>
+          <div class="mini-stat">
+            <span class="mini-num">30</span>
+            <span class="mini-label">Societies</span>
+          </div>
+          <div class="mini-stat">
+            <span class="mini-num">25K+</span>
+            <span class="mini-label">Students</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card card-a">
+          <div class="fc-icon fc-red">🎯</div>
+          <div><strong>Hackathon 2026</strong><br/><small>Registration Open</small></div>
+        </div>
+        <div class="floating-card card-b">
+          <div class="fc-icon fc-blue">🏆</div>
+          <div><strong>Gold Medal — SIH</strong><br/><small>Rahul Sharma</small></div>
+        </div>
+        <div class="floating-card card-c">
+          <div class="fc-icon fc-red">🎵</div>
+          <div><strong>Music Fest</strong><br/><small>May 28 · Open to all</small></div>
+        </div>
+        <div class="hero-image-frame">
+          <img src="cu-banner-img1.jpg" alt="CU Campus" />
+          <div class="frame-overlay"></div>
+        </div>
+        <div class="orbit-ring"></div>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- ─── MARQUEE STRIP ─── -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>★ Admissions Open 2026</span>
+      <span>★ #1 Private University in Punjab</span>
+      <span>★ Innovation Hub Inaugurated</span>
+      <span>★ Global Game Jam — May 15</span>
+      <span>★ Hackathon Registration Open</span>
+      <span>★ Admissions Open 2026</span>
+      <span>★ #1 Private University in Punjab</span>
+      <span>★ Innovation Hub Inaugurated</span>
+      <span>★ Global Game Jam — May 15</span>
+      <span>★ Hackathon Registration Open</span>
+    </div>
+  </div>
+
+  <!-- ─── FEATURES — BENTO GRID ─── -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-label">Why CU Intranet?</div>
+      <h2 class="section-heading">Everything to <span class="gradient-text">thrive on campus</span></h2>
+      <p class="section-desc">A unified platform connecting students to opportunities, events, and each other.</p>
+
+      <div class="bento-grid">
+        <div class="bento-card bento-lg" style="--i:0">
+          <div class="bento-icon bi-red">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          </div>
+          <h3>Personalized Dashboard</h3>
+          <p>Your academic and extracurricular life, unified in one beautifully organized dashboard. Track progress, upcoming events, and club activities at a glance.</p>
+          <div class="bento-tag">Most Popular</div>
+        </div>
+        <div class="bento-card" style="--i:1">
+          <div class="bento-icon bi-blue">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+          </div>
+          <h3>Event Calendar</h3>
+          <p>Real-time updates on hackathons, workshops, and fests.</p>
+        </div>
+        <div class="bento-card" style="--i:2">
+          <div class="bento-icon bi-red">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3>Club Discovery</h3>
+          <p>37 diverse clubs spanning tech, arts, sports, and culture.</p>
+        </div>
+        <div class="bento-card" style="--i:3">
+          <div class="bento-icon bi-blue">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2z"/></svg>
+          </div>
+          <h3>Achievements</h3>
+          <p>Celebrate wins from national competitions to artistic milestones.</p>
+        </div>
+        <div class="bento-card bento-lg" style="--i:4">
+          <div class="bento-icon bi-red">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+          </div>
+          <h3>Seamless Communication</h3>
+          <p>Connect with club leads, community managers, and fellow students effortlessly. Get real-time notifications and never miss an important update.</p>
+          <div class="bento-tag tag-blue">New Feature</div>
+        </div>
+        <div class="bento-card" style="--i:5">
+          <div class="bento-icon bi-blue">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3>Professional Societies</h3>
+          <p>30 societies to sharpen skills, build networks, and launch careers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EVENTS — TIMELINE CARDS ─── -->
+  <section class="events" id="events">
+    <div class="container">
+      <div class="section-label label-light">Upcoming Events</div>
+      <h2 class="section-heading heading-light">Don't miss what's <span class="highlight-gold">happening</span></h2>
+      <p class="section-desc desc-light">Your calendar for everything co-curricular at CU.</p>
+
+      <div class="timeline">
+        <div class="timeline-line"></div>
+        <div class="timeline-item" style="--i:0">
+          <div class="timeline-dot dot-blue"></div>
+          <div class="timeline-card">
+            <div class="tc-header" style="background: linear-gradient(135deg, #1a237e, #0d47a1);">
+              <span class="tc-badge">FEST</span>
+              <div class="tc-date"><span>15</span>MAY</div>
+            </div>
+            <div class="tc-body">
+              <h4>Global Game Jam 2026</h4>
+              <p>48-hour international game development marathon.</p>
+              <div class="tc-meta"><span>🕐 48 Hours</span><span>👥 200+</span></div>
+              <a href="#" class="tc-link">Register Now <span>→</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" style="--i:1">
+          <div class="timeline-dot dot-red"></div>
+          <div class="timeline-card">
+            <div class="tc-header" style="background: linear-gradient(135deg, #b71c1c, #d32f2f);">
+              <span class="tc-badge">CLUB</span>
+              <div class="tc-date"><span>22</span>MAY</div>
+            </div>
+            <div class="tc-body">
+              <h4>TechTalks Hackathon</h4>
+              <p>CU's biggest hackathon with ₹1L prize pool.</p>
+              <div class="tc-meta"><span>🕐 24 Hours</span><span>👥 500+</span></div>
+              <a href="#" class="tc-link">Register Now <span>→</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" style="--i:2">
+          <div class="timeline-dot dot-blue"></div>
+          <div class="timeline-card">
+            <div class="tc-header" style="background: linear-gradient(135deg, #0d47a1, #1565c0);">
+              <span class="tc-badge">COMMUNITY</span>
+              <div class="tc-date"><span>28</span>MAY</div>
+            </div>
+            <div class="tc-body">
+              <h4>Cultural Fiesta 2026</h4>
+              <p>Music, dance, drama, and art from across India.</p>
+              <div class="tc-meta"><span>🕐 3 Days</span><span>👥 2000+</span></div>
+              <a href="#" class="tc-link">Register Now <span>→</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" style="--i:3">
+          <div class="timeline-dot dot-red"></div>
+          <div class="timeline-card">
+            <div class="tc-header" style="background: linear-gradient(135deg, #880e4f, #c2185b);">
+              <span class="tc-badge">PROFESSIONAL</span>
+              <div class="tc-date"><span>05</span>JUN</div>
+            </div>
+            <div class="tc-body">
+              <h4>Industry Connect Summit</h4>
+              <p>Meet industry leaders. Networking and internship drives.</p>
+              <div class="tc-meta"><span>🕐 1 Day</span><span>👥 1000+</span></div>
+              <a href="#" class="tc-link">Register Now <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CLUBS — CARD GRID ─── -->
+  <section class="clubs" id="clubs">
+    <div class="container">
+      <div class="section-label">Explore Our Clubs</div>
+      <h2 class="section-heading">Find your <span class="gradient-text">community</span></h2>
+      <p class="section-desc">37 clubs across tech, arts, sports, culture & more. There's a home for everyone.</p>
+
+      <div class="club-grid">
+        <div class="club-card" style="--i:0">
+          <div class="club-top">
+            <div class="club-icon" style="background: linear-gradient(135deg, #c62828, #e53935);">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+            </div>
+            <span class="club-members"><span class="live-dot"></span>248</span>
+          </div>
+          <h4>Coding Club</h4>
+          <p>DSA, competitive programming, and open source collaboration.</p>
+        </div>
+        <div class="club-card" style="--i:1">
+          <div class="club-top">
+            <div class="club-icon" style="background: linear-gradient(135deg, #0d47a1, #1976d2);">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M12 3C7.59 3 4 5.24 4 8v8c0 2.76 3.59 5 8 5s8-2.24 8-5V8c0-2.76-3.59-5-8-5z"/></svg>
+            </div>
+            <span class="club-members"><span class="live-dot"></span>189</span>
+          </div>
+          <h4>Robotics Club</h4>
+          <p>Build autonomous bots and compete in national championships.</p>
+        </div>
+        <div class="club-card" style="--i:2">
+          <div class="club-top">
+            <div class="club-icon" style="background: linear-gradient(135deg, #c62828, #e53935);">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            </div>
+            <span class="club-members"><span class="live-dot"></span>312</span>
+          </div>
+          <h4>Music Club</h4>
+          <p>Classical to contemporary — perform, compose, and collaborate.</p>
+        </div>
+        <div class="club-card" style="--i:3">
+          <div class="club-top">
+            <div class="club-icon" style="background: linear-gradient(135deg, #0d47a1, #1976d2);">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M12 15.2c-1.77 0-3.2-1.43-3.2-3.2s1.43-3.2 3.2-3.2 3.2 1.43 3.2 3.2-1.43 3.2-3.2 3.2zM9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9z"/></svg>
+            </div>
+            <span class="club-members"><span class="live-dot"></span>176</span>
+          </div>
+          <h4>Photography Club</h4>
+          <p>Capture moments, tell stories, and showcase your lens artistry.</p>
+        </div>
+        <div class="club-card" style="--i:4">
+          <div class="club-top">
+            <div class="club-icon" style="background: linear-gradient(135deg, #c62828, #e53935);">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+            </div>
+            <span class="club-members"><span class="live-dot"></span>204</span>
+          </div>
+          <h4>Debate Society</h4>
+          <p>Sharpen arguments and compete in national MUN and debate events.</p>
+        </div>
+        <div class="club-card" style="--i:5">
+          <div class="club-top">
+            <div class="club-icon" style="background: linear-gradient(135deg, #0d47a1, #1976d2);">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+            </div>
+            <span class="club-members"><span class="live-dot"></span>290</span>
+          </div>
+          <h4>E-Cell</h4>
+          <p>Turn ideas into startups. Pitching, funding, and incubation.</p>
+        </div>
+      </div>
+      <div class="clubs-cta-row">
+        <a href="#" class="cta-primary">View All 37 Clubs <span class="cta-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ACHIEVEMENTS — SPOTLIGHT ─── -->
+  <section class="achievements" id="achievements">
+    <div class="container">
+      <div class="section-label">Student Achievements</div>
+      <h2 class="section-heading">CU Students <span class="gradient-text">Making Waves</span></h2>
+      <p class="section-desc">From national podiums to international stages — our students lead the way.</p>
+
+      <div class="spotlight-grid">
+        <div class="spotlight-card" style="--i:0">
+          <div class="spot-visual" style="background: linear-gradient(135deg, #0d47a1, #1976d2, #f8b400);">
+            <span class="spot-emoji">🥇</span>
+            <div class="spot-label">INDIASKILLS 2026</div>
+          </div>
+          <div class="spot-content">
+            <h4>Gold Medal at IndiaSkills Mechatronics</h4>
+            <p>Rahul Sharma secured the Gold Medal with excellence in automation, robotics, and industrial control systems. Cash prize of ₹20,000.</p>
+            <a href="#" class="spot-link">Read Full Story →</a>
+          </div>
+        </div>
+        <div class="spotlight-card" style="--i:1">
+          <div class="spot-visual" style="background: linear-gradient(135deg, #b71c1c, #e53935);">
+            <span class="spot-emoji">🥈</span>
+            <div class="spot-label">SIH 2026</div>
+          </div>
+          <div class="spot-content">
+            <h4>Runner-up at Smart India Hackathon</h4>
+            <p>Team Nexus secured 2nd place with their AI-powered crop disease detection system, impressing judges from the Ministry of Agriculture.</p>
+            <a href="#" class="spot-link">Read Full Story →</a>
+          </div>
+        </div>
+        <div class="spotlight-card" style="--i:2">
+          <div class="spot-visual" style="background: linear-gradient(135deg, #0d47a1, #1565c0);">
+            <span class="spot-emoji">📰</span>
+            <div class="spot-label">NIRF 2026</div>
+          </div>
+          <div class="spot-content">
+            <h4>CU Ranked #1 Private University in Punjab</h4>
+            <p>Recognized for excellence in research, placements, and world-class infrastructure by the National Institutional Ranking Framework.</p>
+            <a href="#" class="spot-link">Read Full Story →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── LOGIN — CENTERED GLASS CARD ─── -->
+  <section class="login" id="login">
+    <div class="login-bg-shapes">
+      <div class="login-shape ls-1"></div>
+      <div class="login-shape ls-2"></div>
+      <div class="login-shape ls-3"></div>
+    </div>
+    <div class="container">
+      <div class="login-card">
+        <div class="login-left">
+          <div class="login-brand">
+            <img src="chandigarh-university-cu-logo-png_seeklogo-432515.png" alt="CU" />
+            <span>CU Intranet</span>
+          </div>
+          <h2>Welcome Back</h2>
+          <p class="login-subtitle">Sign in to access your dashboard, clubs, and events.</p>
+          <form onsubmit="return false;">
+            <div class="field">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+              <input type="email" placeholder="you@cumail.in" required />
+            </div>
+            <div class="field">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <input type="password" placeholder="Password" required />
+            </div>
+            <div class="field-row">
+              <a href="#" class="forgot">Forgot Password?</a>
+            </div>
+            <button type="submit" class="login-btn">Sign In</button>
+          </form>
+          <p class="signup-prompt">Not a member? <a href="#">Register here</a></p>
+        </div>
+        <div class="login-right">
+          <div class="lr-decor lr-d1"></div>
+          <div class="lr-decor lr-d2"></div>
+          <h3>Welcome to<br/><span>CU-Intranet</span></h3>
+          <p>Your gateway to a connected campus experience.</p>
+          <ul class="lr-features">
+            <li style="--fi:0">✦ Personalized Dashboard</li>
+            <li style="--fi:1">✦ Seamless Communication</li>
+            <li style="--fi:2">✦ Real-time Event Updates</li>
+            <li style="--fi:3">✦ Club & Society Management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <div class="footer-brand">
+          <img src="chandigarh-university-cu-logo-png_seeklogo-432515.png" alt="CU" />
+          <strong>Chandigarh University</strong>
+        </div>
+        <p>Empowering students to explore, learn, and grow through vibrant club activities and events.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <a href="#clubs">Clubs</a>
+        <a href="#features">Communities</a>
+        <a href="#achievements">Societies</a>
+        <a href="#login">Join Now</a>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <a href="#">SOP Portal</a>
+        <a href="#">Academic Calendar</a>
+        <a href="#">Student Handbook</a>
+        <a href="#">Grievance Portal</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <div class="social-row">
+          <a href="#" class="social-pill pill-li" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-pill pill-ig" aria-label="Instagram">ig</a>
+        </div>
+        <p class="footer-email">📧 intranet@cumail.in</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Chandigarh University. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#hero" class="back-top" aria-label="Back to top">↑</a>
+  <script src="script.js"></script>
+</body>
+</html>
