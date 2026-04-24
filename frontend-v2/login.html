@@ -10,110 +10,141 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        .step-hidden {
-            display: none;
-        }
-
-        .fade-in {
-            animation: slideUp 0.5s var(--ease) both;
-        }
-
-        .email-display {
-            background: var(--blue-bg);
-            padding: 0.75rem 1rem;
-            border-radius: var(--r-md);
+        .login-bg {
+            background: var(--bg-light);
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 2rem;
-            font-size: 0.88rem;
-            color: var(--blue);
-            font-weight: 600;
-            border: 1px solid rgba(13,71,161,0.1);
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            padding: 2rem;
         }
 
-        .back-btn {
-            background: none;
-            border: none;
-            color: var(--red);
-            cursor: pointer;
-            font-size: 0.78rem;
-            font-weight: 700;
-            margin-left: auto;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            transition: color 0.3s var(--ease);
+        .login-container {
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-light);
         }
 
-        .back-btn:hover {
-            color: var(--blue);
+        .login-branding {
+            padding: 5rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--blue);
+        }
+
+        .login-card {
+            background: white;
+            padding: 5rem;
+            margin: 0;
+            max-width: none;
+            border-radius: 0;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .input-field {
+            background: #f9fafb;
+            border: 2px solid #f3f4f6;
+            padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .input-field:focus {
+            background: white;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 4px rgba(13, 71, 161, 0.1);
+        }
+
+        @media (max-width: 900px) {
+            .login-container { grid-template-columns: 1fr; max-width: 500px; border-radius: 30px; }
+            .login-branding { display: none; }
+            .login-card { padding: 3rem 2rem; }
         }
     </style>
 </head>
 <body class="login-bg">
-    <header style="border: none; background: transparent;">
-        <div class="logo">
-            <h2 class="serif" style="color: var(--accent); font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
-                <div style="background: var(--accent); color: white; padding: 4px 8px; border-radius: 4px;"><i data-lucide="library" size="16"></i></div>
-                CU Intranet <span style="font-weight: 300; color: var(--text-muted); font-size: 0.9rem; margin-left: 5px;">| Co-Curricular Activity Management System</span>
-            </h2>
-        </div>
-    </header>
-
-    <div class="login-card">
-        <h2 style="font-family: 'Work Sans', sans-serif;">Staff & Student Login</h2>
-        <p style="color: var(--text-muted); margin-bottom: 2.5rem; font-size: 0.9rem;">Sign in with your university account</p>
-        
-        <!-- Step 1: Email -->
-        <form id="emailForm" class="fade-in" style="text-align: left;">
-            <div style="margin-bottom: 2rem;">
-                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; color: #374151;">University Email ID</label>
-                <div style="position: relative;">
-                    <i data-lucide="mail" size="18" style="position: absolute; left: 1rem; top: 1rem; color: var(--text-muted);"></i>
-                    <input type="email" id="emailInput" class="input-field" placeholder="username@cumail.in / username@cuchd.in" required 
-                           pattern=".+@cumail\.in|.+@cuchd\.in" title="Please enter a valid university email address (cumail.in or cuchd.in)">
+    <div class="login-container">
+        <!-- Left Side: Branding -->
+        <div class="login-branding">
+            <div>
+                <div style="background: white; color: var(--red); display: inline-flex; padding: 12px; border-radius: 12px; margin-bottom: 2rem;">
+                    <i data-lucide="shield-check" size="32"></i>
                 </div>
-                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; font-style: italic;">Use your official university credentials to sign in.</p>
+                <h1 class="serif" style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem;">Secure <br>Institutional <br>Access</h1>
+                <p style="font-size: 1.1rem; opacity: 0.8; max-width: 350px; line-height: 1.6;">Unified workspace for students, faculty, and administrators to collaborate and track progress.</p>
             </div>
             
-            <button type="submit" class="btn btn-maroon" style="width: 100%; justify-content: center; padding: 1.25rem; font-size: 1rem; border-radius: 16px;">
-                Next <i data-lucide="arrow-right" size="18"></i>
-            </button>
-        </form>
-
-        <!-- Step 2: Password -->
-        <form id="passwordForm" class="step-hidden fade-in" style="text-align: left;">
-            <div class="email-display">
-                <i data-lucide="user" size="16"></i>
-                <span id="displayEmail">user@cumail.in</span>
-                <button type="button" class="back-btn" id="changeEmail">Change</button>
+            <div style="display: flex; gap: 3rem;">
+                <div><h4 style="font-size: 1.5rem; margin-bottom: 0;">42k+</h4><p style="font-size: 0.7rem; opacity: 0.6; text-transform: uppercase;">Users</p></div>
+                <div><h4 style="font-size: 1.5rem; margin-bottom: 0;">100%</h4><p style="font-size: 0.7rem; opacity: 0.6; text-transform: uppercase;">Secure</p></div>
             </div>
-
-            <div style="margin-bottom: 2rem;">
-                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; color: #374151;">Password</label>
-                <div style="position: relative;">
-                    <i data-lucide="lock" size="18" style="position: absolute; left: 1rem; top: 1rem; color: var(--text-muted);"></i>
-                    <input type="password" id="passwordInput" class="input-field" placeholder="Enter your password" required>
-                </div>
-                <p id="loginError" style="color: #EF4444; font-size: 0.75rem; margin-top: 0.5rem; display: none;">Invalid password. Please try again.</p>
-            </div>
-            
-            <button type="submit" class="btn btn-maroon" style="width: 100%; justify-content: center; padding: 1.25rem; font-size: 1rem; border-radius: 16px;">
-                Log In <i data-lucide="log-in" size="18"></i>
-            </button>
-        </form>
-        
-        <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; font-size: 0.85rem; font-weight: 600;">
-            <a href="#" style="color: var(--accent); text-decoration: none;">Forgot ID?</a>
-            <span style="color: var(--border-light)">•</span>
-            <a href="#" style="color: var(--accent); text-decoration: none;">Need Help?</a>
         </div>
-        
-        <div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">
-            <span>VER 2.4.0</span>
-            <span style="display: flex; align-items: center; gap: 6px;"><div style="width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></div> System Online</span>
+
+        <!-- Right Side: Login Card -->
+        <div class="login-card">
+            <h2 class="serif" style="font-size: 2.2rem; margin-bottom: 0.5rem;">Sign In</h2>
+            <p style="color: var(--text-muted); margin-bottom: 3rem;">Enter your university credentials to continue</p>
+            
+            <!-- Step 1: Email -->
+            <form id="emailForm" class="fade-in">
+                <div style="margin-bottom: 2.5rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; color: var(--text-muted);">University Email ID</label>
+                    <div style="position: relative;">
+                        <i data-lucide="mail" size="20" style="position: absolute; left: 1.2rem; top: 1.2rem; color: var(--text-muted);"></i>
+                        <input type="email" id="emailInput" class="input-field" placeholder="username@cumail.in" required 
+                               pattern=".+@cumail\.in|.+@cuchd\.in" style="width: 100%; border-radius: 16px;">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-maroon" style="width: 100%; justify-content: center; padding: 1.2rem; font-size: 1rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(198, 40, 40, 0.2);">
+                    Next <i data-lucide="chevron-right" size="20"></i>
+                </button>
+            </form>
+
+            <!-- Step 2: Password -->
+            <form id="passwordForm" class="step-hidden fade-in">
+                <div class="email-display" style="background: var(--bg-light); padding: 1rem; border-radius: 12px; margin-bottom: 2rem;">
+                    <i data-lucide="user-check" size="18" style="color: var(--blue);"></i>
+                    <span id="displayEmail" style="font-weight: 700;">user@cumail.in</span>
+                    <button type="button" class="back-btn" id="changeEmail">Edit</button>
+                </div>
+
+                <div style="margin-bottom: 2.5rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; color: var(--text-muted);">Secure Password</label>
+                    <div style="position: relative;">
+                        <i data-lucide="lock-keyhole" size="20" style="position: absolute; left: 1.2rem; top: 1.2rem; color: var(--text-muted);"></i>
+                        <input type="password" id="passwordInput" class="input-field" placeholder="••••••••" required style="width: 100%; border-radius: 16px;">
+                    </div>
+                    <p id="loginError" style="color: var(--red); font-size: 0.75rem; margin-top: 0.8rem; display: none; font-weight: 700;">Incorrect password. Verification failed.</p>
+                </div>
+                
+                <button type="submit" class="btn btn-maroon" style="width: 100%; justify-content: center; padding: 1.2rem; font-size: 1rem; border-radius: 16px;">
+                    Authorize Access <i data-lucide="shield-check" size="20"></i>
+                </button>
+            </form>
+            
+            <div style="margin-top: 3rem; display: flex; justify-content: space-between; align-items: center;">
+                <a href="#" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 700;">Forgot Password?</a>
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 800; color: #10B981;">
+                     <div style="width: 8px; height: 8px; border-radius: 50%; background: currentColor;"></div>
+                     SYSTEM ACTIVE
+                </div>
+            </div>
         </div>
     </div>
+
 
     <footer style="margin-top: auto; padding: 2rem; text-align: center; font-size: 0.75rem; color: var(--text-muted);">
         <p>Copyright © 2026 CU Intranet. All Rights Reserved.</p>
